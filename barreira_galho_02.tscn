@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bqngxwe61yhck"]
+
+[ext_resource type="Texture2D" uid="uid://m83bbelk51ui" path="res://arte/galho_02.png" id="1_allhg"]
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=851626120]
+z_index = -500
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+
+[node name="Barreira" type="Sprite2D" parent="." unique_id=2073381347]
+z_index = -512
+texture_filter = 1
+position = Vector2(-2, -2)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_allhg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1932967257]
+position = Vector2(-12, -5.4861)
+rotation = -0.02617994
+scale = Vector2(1.2421875, 1.0977105)
+polygon = PackedVector2Array(-36, -6, -22, -4, -4, -4, 4, -2, 8, -2, 10, -2, 14, 0, 16, 0, 20, 2, 24, 2, 30, 4, 32, 6, 34, 6, 54, 8, 58, 8, 65.62147, 17.879593, 48, 12, 34, 12, 30, 10, 22, 8, 16, 6, 10, 4, 0, 4, -6, 4, -12, 2, -18, 4, -26, 6, -32, 6, -38, 4, -38, 2, -36, -2)

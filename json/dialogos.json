@@ -1,0 +1,75 @@
+{
+	"dialogs": {
+		"evt_coletou_primeira_luz": {
+			"pt": [
+				"O QUE É ESSA LUZ?",
+				"SINTO QUE ELA VAI ME PROTEGER DO QUE QUER QUE ESTEJA NAS SOMBRAS..."
+			],
+			"en": [
+				"WHAT IS THIS LIGHT?",
+				"I FEEL LIKE IT WILL PROTECT ME FROM...",
+				"WHATEVER IS IN THE SHADOWS..."
+			],
+			"es": [
+				"¿QUÉ ES ESTA LUZ?",
+				"SIENTO QUE ME PROTEGERÁ DE LO QUE SEA QUE ESTÉ EN LAS SOMBRAS..."
+			]
+		},
+		"evt_coletou_segunda_luz": {
+			"pt": [
+				"O QUE É ESSA LUZ?",
+				"SINTO QUE ELA VAI ME PROTEGER DO QUE QUER QUE ESTEJA NAS SOMBRAS..."
+			],
+			"en": [
+				"WHAT IS THIS LIGHT?",
+				"I FEEL LIKE IT WILL PROTECT ME FROM WHATEVER IS IN THE SHADOWS..."
+			],
+			"es": [
+				"¿QUÉ ES ESTA LUZ?",
+				"SIENTO QUE ME PROTEGERÁ DE LO QUE SEA QUE ESTÉ EN LAS SOMBRAS..."
+			]
+		},
+		"evt_coletou_terceira_luz": {
+			"pt": [
+				"ESSA TERCEIRA LUZ PARECE MAIS FORTE.",
+				"PRECISO CONTINUAR SUBINDO ANTES QUE AS SOMBRAS ME ALCANCEM."
+			],
+			"en": [
+				"THIS THIRD LIGHT FEELS STRONGER.",
+				"I NEED TO KEEP CLIMBING BEFORE THE SHADOWS REACH ME."
+			],
+			"es": [
+				"ESTA TERCERA LUZ SE SIENTE MAS FUERTE.",
+				"TENGO QUE SEGUIR SUBIENDO ANTES DE QUE LAS SOMBRAS ME ALCANCEN."
+			]
+		},
+		"evt_coletou_quarta_luz": {
+			"pt": [
+				"QUASE LA.",
+				"SE EU PERDER O RITMO, ELA ME PEGA."
+			],
+			"en": [
+				"ALMOST THERE.",
+				"IF I LOSE MY RHYTHM, IT WILL CATCH ME."
+			],
+			"es": [
+				"CASI LO LOGRO.",
+				"SI PIERDO EL RITMO, ME ALCANZARA."
+			]
+		},
+		"evt_coletou_quinta_luz": {
+			"pt": [
+				"A ULTIMA LUZ.",
+				"AGORA EU VEJO O CAMINHO ATE O FIM."
+			],
+			"en": [
+				"THE LAST LIGHT.",
+				"NOW I CAN SEE THE PATH TO THE END."
+			],
+			"es": [
+				"LA ULTIMA LUZ.",
+				"AHORA PUEDO VER EL CAMINO HASTA EL FINAL."
+			]
+		}
+	}
+}

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b8ihipwojwcrg"]
+
+[ext_resource type="Texture2D" uid="uid://02x7htqyj2rp" path="res://arte/dialogo.png" id="1_ywsdo"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=2044932274]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=169539362]
+texture_filter = 1
+position = Vector2(82, 115)
+scale = Vector2(1.0187501, 0.68595886)
+texture = ExtResource("1_ywsdo")
+
+[node name="Texto" type="Label" parent="Sprite2D" unique_id=1918547875]
+texture_filter = 1
+custom_minimum_size = Vector2(144, 0)
+anchors_preset = -1
+anchor_left = 0.065000005
+anchor_top = 0.26700002
+anchor_right = 0.94200003
+anchor_bottom = 0.73600006
+offset_left = -84.01963
+offset_top = -28.75051
+offset_right = -80.33963
+offset_bottom = -35.76651
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.05882353, 0.05882353, 0.105882354, 1)
+theme_override_font_sizes/font_size = 12
+text = "textasdasdasd"
+autowrap_mode = 2

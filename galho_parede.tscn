@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://dfi4ismcxu8u4"]
+
+[ext_resource type="Texture2D" uid="uid://cxxb4aqfqej47" path="res://arte/galho_wall.png" id="1_c4w5b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(8.25, 8.5)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=851626120]
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+
+[node name="Barreira" type="Sprite2D" parent="." unique_id=2073381347]
+z_index = -512
+texture_filter = 1
+position = Vector2(-2, -2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_c4w5b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1721398218]
+position = Vector2(17, -48)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1008144680]
+position = Vector2(16, -38)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=80441628]
+position = Vector2(16, -30)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=1787965120]
+position = Vector2(16, -22)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="." unique_id=594611423]
+position = Vector2(14, -16)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="." unique_id=1872806108]
+position = Vector2(14, -8)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="." unique_id=664596600]
+position = Vector2(14, 0)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="." unique_id=925429170]
+position = Vector2(14, 8)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="." unique_id=1074218080]
+position = Vector2(12, 16)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="." unique_id=465387579]
+position = Vector2(10, 24)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="." unique_id=1393265169]
+position = Vector2(10, 32)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)

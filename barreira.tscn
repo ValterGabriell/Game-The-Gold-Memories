@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bnrhy1qvwsv6t"]
+
+[ext_resource type="Texture2D" uid="uid://drv260vnhfrh5" path="res://arte/arvore.png" id="1_fpmvo"]
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=851626120]
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+
+[node name="Barreira" type="Sprite2D" parent="." unique_id=2073381347]
+z_index = -2000
+texture_filter = 1
+position = Vector2(-2, -2)
+rotation = 1.5707964
+texture = ExtResource("1_fpmvo")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1327016382]
+polygon = PackedVector2Array(-36, -6, -22, -4, -4, -4, 4, -2, 8, -2, 10, -2, 14, 0, 16, 0, 20, 2, 24, 2, 30, 4, 32, 6, 34, 6, 54, 8, 58, 8, 58, 12, 48, 12, 34, 12, 30, 10, 22, 8, 16, 6, 10, 4, 0, 4, -6, 4, -12, 2, -18, 4, -26, 6, -32, 6, -38, 4, -38, 2, -36, -2)

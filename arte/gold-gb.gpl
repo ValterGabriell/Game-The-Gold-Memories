@@ -1,0 +1,8 @@
+GIMP Palette
+#Palette Name: Gold GB
+#Description: 2nd gameboy palette... If you want, you can make it into a 6 colour palette by adding #ffffff and #000000!  
+#Colors: 4
+33	11	27	210b1b
+77	34	44	4d222c
+157	101	76	9d654c
+207	171	81	cfab51

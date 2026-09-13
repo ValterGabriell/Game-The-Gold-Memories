@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cg736tquq7dun"]
+
+[ext_resource type="Script" uid="uid://b7yyv86fxfs8k" path="res://codigo/luz.gd" id="1_dgnv0"]
+[ext_resource type="Texture2D" uid="uid://ckyehfg2a6plk" path="res://icon.svg" id="2_0cwt1"]
+[ext_resource type="AudioStream" uid="uid://d0i7nncwu3k55" path="res://arte/msc/song_to_read.wav" id="3_0cwt1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wjoo6"]
+radius = 6.0827627
+
+[node name="Luz" type="Area2D" unique_id=1303959823 node_paths=PackedStringArray("audioStreamPlayer2D")]
+script = ExtResource("1_dgnv0")
+audioStreamPlayer2D = NodePath("AudioStreamPlayer2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1085807449]
+shape = SubResource("CircleShape2D_wjoo6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1981831141]
+scale = Vector2(0.0859375, 0.0703125)
+texture = ExtResource("2_0cwt1")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1147024124]
+stream = ExtResource("3_0cwt1")
+autoplay = true
+max_distance = 200.0
+attenuation = 2.3784153
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

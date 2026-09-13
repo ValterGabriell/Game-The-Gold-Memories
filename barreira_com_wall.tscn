@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://hlrada6hsoe6"]
+
+[ext_resource type="Texture2D" uid="uid://b4q04bedav2ep" path="res://arte/pulocom-wall.png" id="1_i3xvk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(26.5, 6.5)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=851626120]
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+
+[node name="Barreira" type="Sprite2D" parent="." unique_id=2073381347]
+z_index = -2000
+texture_filter = 1
+position = Vector2(1.9999998, 3.9999995)
+rotation = -3.1415927
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_i3xvk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1721398218]
+position = Vector2(60, 22)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=897307404]
+position = Vector2(-60, 20)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2147177114]
+position = Vector2(-18, 4)
+rotation = -0.12915437
+scale = Vector2(1.2421875, 1.0977105)
+polygon = PackedVector2Array(-36, -6, -22, -4, -4, -4, 4, -2, 8, -2, 10, -2, 14, 0, 16, 0, 20, 2, 24, 2, 30, 4, 32, 6, 34, 6, 54, 8, 58, 8, 58, 12, 48, 12, 34, 12, 30, 10, 22, 8, 16, 6, 10, 4, 0, 4, -6, 4, -12, 2, -18, 4, -26, 6, -32, 6, -38, 4, -38, 2, -36, -2)

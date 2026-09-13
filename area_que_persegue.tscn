@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://8s3tke4hb8qw"]
+
+[ext_resource type="Script" uid="uid://b0tiavjou48n6" path="res://codigo/area_que_persegue_o_jogador.gd" id="1_jge3u"]
+[ext_resource type="Texture2D" uid="uid://b650cumvbhuq3" path="res://arte/spt/dark/dark.png" id="2_jge3u"]
+[ext_resource type="AudioStream" uid="uid://b1me00dsd8knw" path="res://arte/msc/chace.wav" id="3_nsvt3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(160, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsvt3"]
+atlas = ExtResource("2_jge3u")
+region = Rect2(0, 0, 216, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8jl6"]
+atlas = ExtResource("2_jge3u")
+region = Rect2(216, 0, 216, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhj6x"]
+atlas = ExtResource("2_jge3u")
+region = Rect2(432, 0, 216, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctcj3"]
+atlas = ExtResource("2_jge3u")
+region = Rect2(648, 0, 216, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsvt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8jl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhj6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctcj3")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="AreaQuePersegue" type="Area2D" unique_id=1707055331 node_paths=PackedStringArray("animatedSprite", "audioStreamPlayer2D")]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_jge3u")
+animatedSprite = NodePath("Sprite2D")
+audioStreamPlayer2D = NodePath("AudioStreamPlayer2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1664733905]
+position = Vector2(-2, 22)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0.669451, 0.3898792, 1.0845727, 0)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2071233450]
+texture_filter = 1
+position = Vector2(30, 47.000008)
+scale = Vector2(1.2109375, 1.5156251)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+frame = 1
+frame_progress = 0.72076976
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1424469763]
+stream = ExtResource("3_nsvt3")
+volume_db = 5.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
