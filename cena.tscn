@@ -12,11 +12,12 @@
 [ext_resource type="Script" uid="uid://cmgap8f1pu37n" path="res://codigo/animacoes_personagem.gd" id="8_3vt2s"]
 [ext_resource type="Texture2D" uid="uid://b5ho41un1y641" path="res://arte/luz/light2D-pixel.png" id="9_b3l1h"]
 [ext_resource type="Script" uid="uid://barngw3c7kqd5" path="res://codigo/area_entrada_saida.gd" id="9_ni2lo"]
-[ext_resource type="Script" uid="uid://de8amkhy241sl" path="res://codigo/area_pra_pular_mais_alto.gd" id="10_kwde5"]
 [ext_resource type="PackedScene" uid="uid://dfi4ismcxu8u4" path="res://galho_parede.tscn" id="11_wxgaf"]
 [ext_resource type="PackedScene" uid="uid://8s3tke4hb8qw" path="res://area_que_persegue.tscn" id="13_5efat"]
 [ext_resource type="Texture2D" uid="uid://d1pjkdww2nnp0" path="res://arte/limite.png" id="15_467t4"]
 [ext_resource type="Texture2D" uid="uid://dpc1ygmjkvbh5" path="res://arte/luz/light2D-gradient.png" id="15_qucpo"]
+[ext_resource type="PackedScene" uid="uid://cnns1nt24iaao" path="res://area_teleporte.tscn" id="17_qucpo"]
+[ext_resource type="PackedScene" uid="uid://cigr3i2fw31x0" path="res://area_pra_pular_mais_alto.tscn" id="18_qucpo"]
 [ext_resource type="PackedScene" uid="uid://bqngxwe61yhck" path="res://barreira_galho_02.tscn" id="19_trren"]
 [ext_resource type="Script" uid="uid://bmt5i7bdp82oh" path="res://codigo/dialogo.gd" id="21_5efat"]
 [ext_resource type="PackedScene" uid="uid://kh4bsqgjo568" path="res://base_pulo_tempo.tscn" id="23_qucpo"]
@@ -262,8 +263,6 @@ height = 33.333374
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yan1i"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gngh"]
 size = Vector2(20, 500.66092)
 
@@ -279,7 +278,7 @@ camera_do_jogador = NodePath("../CharacterBody2D/Codigos/Camera")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1634963222]
 z_index = -650
-position = Vector2(62, -270)
+position = Vector2(58, -2075)
 scale = Vector2(0.3, 0.3)
 collision_mask = 30
 script = ExtResource("1_mxkdn")
@@ -321,20 +320,10 @@ texture_scale = 0.1
 [node name="Barreiras" type="Node2D" parent="." unique_id=213275482]
 
 [node name="Barreira" parent="Barreiras" unique_id=851626120 instance=ExtResource("3_c3sxu")]
-position = Vector2(47, 94)
-
-[node name="Barreira2" parent="Barreiras" unique_id=1771049253 instance=ExtResource("3_c3sxu")]
-position = Vector2(132, 89)
-rotation = -3.1415927
-scale = Vector2(0.7, 0.5)
-
-[node name="Barreira7" parent="Barreiras" unique_id=1504917127 instance=ExtResource("3_c3sxu")]
-position = Vector2(132, 89)
-rotation = -3.1415927
-scale = Vector2(0.7, 0.5)
+position = Vector2(49, 93)
 
 [node name="Barreira3" parent="Barreiras" unique_id=537149350 instance=ExtResource("3_c3sxu")]
-position = Vector2(122, 64)
+position = Vector2(122, 71)
 
 [node name="Barreira5" parent="Barreiras" unique_id=222791565 instance=ExtResource("3_c3sxu")]
 position = Vector2(21, 14)
@@ -390,6 +379,14 @@ rotation = 6.2831855
 [node name="Barreira" parent="Barreiras/BarreiraComWALL3" index="0" unique_id=2073381347]
 flip_h = true
 
+[node name="AreaTeleporte" parent="Barreiras" unique_id=1555756234 node_paths=PackedStringArray("areaDeSaida") instance=ExtResource("17_qucpo")]
+position = Vector2(31, 84)
+rotation = 3.1415927
+areaDeSaida = NodePath("../AreaTeleporte2")
+
+[node name="AreaTeleporte2" parent="Barreiras" unique_id=734277997 instance=ExtResource("17_qucpo")]
+position = Vector2(127, 56)
+
 [node name="Barreiras2" type="Node2D" parent="." unique_id=1454520994]
 position = Vector2(27, -459)
 
@@ -409,6 +406,9 @@ position = Vector2(111, -14)
 [node name="Barreira8" parent="Barreiras2" unique_id=1233319539 instance=ExtResource("3_c3sxu")]
 position = Vector2(104, -79)
 
+[node name="Barreira10" parent="Barreiras2" unique_id=1086102499 instance=ExtResource("3_c3sxu")]
+position = Vector2(26, -809)
+
 [node name="Galho09" parent="Barreiras2" unique_id=1255140392 instance=ExtResource("19_trren")]
 position = Vector2(-9, -77)
 
@@ -421,17 +421,77 @@ position = Vector2(130, -159)
 rotation = -3.1415927
 
 [node name="Barreira17" parent="Barreiras2" unique_id=2060234505 instance=ExtResource("3_c3sxu")]
-position = Vector2(42, -388)
+position = Vector2(105, -278)
+rotation = 3.1415927
 
 [node name="GalhoParede3" parent="Barreiras2" unique_id=1989416581 instance=ExtResource("11_wxgaf")]
 z_index = -500
 position = Vector2(18, -34)
 
+[node name="GalhoParede4" parent="Barreiras2" unique_id=772604341 instance=ExtResource("11_wxgaf")]
+z_index = -500
+position = Vector2(99, -364)
+rotation = 3.1415927
+
+[node name="GalhoParede5" parent="Barreiras2" unique_id=254239608 instance=ExtResource("11_wxgaf")]
+z_index = -500
+position = Vector2(77, -1629)
+rotation = 3.1415927
+
+[node name="GalhoParede6" parent="Barreiras2" unique_id=1823071336 instance=ExtResource("11_wxgaf")]
+z_index = -500
+position = Vector2(15, -1711)
+
 [node name="PuloTemporario2" parent="Barreiras2" unique_id=746499511 instance=ExtResource("23_qucpo")]
-position = Vector2(91, -275)
+position = Vector2(35, -207)
 
 [node name="PuloTemporario3" parent="Barreiras2" unique_id=412359742 instance=ExtResource("23_qucpo")]
-position = Vector2(118, -280)
+position = Vector2(51, -226)
+
+[node name="PuloTemporario4" parent="Barreiras2" unique_id=1290804075 instance=ExtResource("23_qucpo")]
+position = Vector2(95, -298)
+
+[node name="PuloTemporario5" parent="Barreiras2" unique_id=1678253135 instance=ExtResource("23_qucpo")]
+position = Vector2(76, -320)
+
+[node name="PuloTemporario6" parent="Barreiras2" unique_id=294636820 instance=ExtResource("23_qucpo")]
+position = Vector2(73, -386)
+
+[node name="PuloTemporario7" parent="Barreiras2" unique_id=1657508939 instance=ExtResource("23_qucpo")]
+position = Vector2(53, -396)
+
+[node name="PuloTemporario8" parent="Barreiras2" unique_id=2020963017 instance=ExtResource("23_qucpo")]
+position = Vector2(53, -396)
+
+[node name="PuloTemporario9" parent="Barreiras2" unique_id=1756246034 instance=ExtResource("23_qucpo")]
+position = Vector2(42, -414)
+
+[node name="PuloTemporario10" parent="Barreiras2" unique_id=1580438974 instance=ExtResource("23_qucpo")]
+position = Vector2(60, -435)
+
+[node name="PuloTemporario12" parent="Barreiras2" unique_id=1576430971 instance=ExtResource("23_qucpo")]
+position = Vector2(29, -1392)
+
+[node name="PuloTemporario16" parent="Barreiras2" unique_id=1267026265 instance=ExtResource("23_qucpo")]
+position = Vector2(35, -1603)
+
+[node name="PuloTemporario17" parent="Barreiras2" unique_id=1209518315 instance=ExtResource("23_qucpo")]
+position = Vector2(59, -1666)
+
+[node name="PuloTemporario18" parent="Barreiras2" unique_id=887494877 instance=ExtResource("23_qucpo")]
+position = Vector2(40, -1684)
+
+[node name="PuloTemporario13" parent="Barreiras2" unique_id=479526565 instance=ExtResource("23_qucpo")]
+position = Vector2(45, -1413)
+
+[node name="PuloTemporario14" parent="Barreiras2" unique_id=1489247825 instance=ExtResource("23_qucpo")]
+position = Vector2(57, -1429)
+
+[node name="PuloTemporario15" parent="Barreiras2" unique_id=1491119224 instance=ExtResource("23_qucpo")]
+position = Vector2(73, -1445)
+
+[node name="PuloTemporario11" parent="Barreiras2" unique_id=1495324649 instance=ExtResource("23_qucpo")]
+position = Vector2(60, -435)
 
 [node name="BarreiraComWALL3" parent="Barreiras2" unique_id=896024314 instance=ExtResource("24_5iuaw")]
 position = Vector2(15, -155)
@@ -441,18 +501,19 @@ rotation = 6.2831855
 flip_h = true
 
 [node name="AreaQuePersegue" parent="." unique_id=1707055331 node_paths=PackedStringArray("player") instance=ExtResource("13_5efat")]
-position = Vector2(80, 129)
+position = Vector2(79, 144)
 player = NodePath("../CharacterBody2D")
 
 [node name="Luzes" type="Node2D" parent="." unique_id=1256928628]
 
 [node name="Luz3" parent="Luzes" unique_id=393952183 node_paths=PackedStringArray("player") instance=ExtResource("7_yan1i")]
 z_index = -651
-position = Vector2(70, -271)
+position = Vector2(73, -22)
 player = NodePath("../../CharacterBody2D")
 numeroDaLuz = 1
 
-[node name="PointLight2D" type="PointLight2D" parent="Luzes/Luz3" unique_id=1394852502]
+[node name="PointLight2D2" type="PointLight2D" parent="Luzes/Luz3" unique_id=1394852502]
+position = Vector2(0, 12)
 energy = 0.5
 texture = ExtResource("15_qucpo")
 texture_scale = 2.5
@@ -463,7 +524,18 @@ position = Vector2(58, -618)
 player = NodePath("../../CharacterBody2D")
 numeroDaLuz = 2
 
-[node name="PointLight2D" type="PointLight2D" parent="Luzes/Luz4" unique_id=202419043]
+[node name="PointLight2D2" type="PointLight2D" parent="Luzes/Luz4" unique_id=202419043]
+energy = 0.5
+texture = ExtResource("15_qucpo")
+texture_scale = 2.5
+
+[node name="Luz5" parent="Luzes" unique_id=611674586 node_paths=PackedStringArray("player") instance=ExtResource("7_yan1i")]
+z_index = -651
+position = Vector2(74, -1270)
+player = NodePath("../../CharacterBody2D")
+numeroDaLuz = 3
+
+[node name="PointLight2D2" type="PointLight2D" parent="Luzes/Luz5" unique_id=1498036112]
 energy = 0.5
 texture = ExtResource("15_qucpo")
 texture_scale = 2.5
@@ -471,25 +543,9 @@ texture_scale = 2.5
 [node name="AreaDeTransferencias" type="Node2D" parent="." unique_id=1950259174]
 position = Vector2(6, 2)
 
-[node name="AreaTeleporte" type="Area2D" parent="AreaDeTransferencias" unique_id=896468862 node_paths=PackedStringArray("areaDeSaida")]
+[node name="AreaTeleporte" parent="AreaDeTransferencias" unique_id=116428705 node_paths=PackedStringArray("areaDeSaida") instance=ExtResource("17_qucpo")]
 position = Vector2(122, -300)
-collision_layer = 4
-script = ExtResource("9_ni2lo")
 areaDeSaida = NodePath("../AreaTeleporte2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeTransferencias/AreaTeleporte" unique_id=2102761660]
-shape = SubResource("RectangleShape2D_yan1i")
-debug_color = Color(10.651967, 10.651967, 9.806819, 0)
-
-[node name="AreaTeleporte3" type="Area2D" parent="AreaDeTransferencias" unique_id=1885926996 node_paths=PackedStringArray("areaDeSaida")]
-position = Vector2(26, -547)
-collision_layer = 4
-script = ExtResource("9_ni2lo")
-areaDeSaida = NodePath("../AreaTeleporte4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeTransferencias/AreaTeleporte3" unique_id=1807776046]
-shape = SubResource("RectangleShape2D_yan1i")
-debug_color = Color(10.651967, 10.651967, 9.806819, 0)
 
 [node name="AreaTeleporte4" type="Area2D" parent="AreaDeTransferencias" unique_id=1366418267]
 position = Vector2(118, -618)
@@ -509,47 +565,127 @@ script = ExtResource("9_ni2lo")
 shape = SubResource("RectangleShape2D_yan1i")
 debug_color = Color(10.651967, 10.651967, 9.806819, 0)
 
+[node name="AreaTeleporte6" type="Area2D" parent="AreaDeTransferencias" unique_id=1521658018]
+position = Vector2(44, -1320)
+collision_layer = 4
+script = ExtResource("9_ni2lo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeTransferencias/AreaTeleporte6" unique_id=159832157]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_yan1i")
+debug_color = Color(10.651967, 10.651967, 9.806819, 0)
+
+[node name="AreaTeleporte8" type="Area2D" parent="AreaDeTransferencias" unique_id=273882]
+position = Vector2(48, -1590)
+collision_layer = 4
+script = ExtResource("9_ni2lo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeTransferencias/AreaTeleporte8" unique_id=1034752278]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_yan1i")
+debug_color = Color(10.651967, 10.651967, 9.806819, 0)
+
+[node name="AreaTeleporte10" type="Area2D" parent="AreaDeTransferencias" unique_id=664481125]
+position = Vector2(96, -1808)
+collision_layer = 4
+script = ExtResource("9_ni2lo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeTransferencias/AreaTeleporte10" unique_id=611276008]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_yan1i")
+debug_color = Color(10.651967, 10.651967, 9.806819, 0)
+
+[node name="AreaTeleporte12" type="Area2D" parent="AreaDeTransferencias" unique_id=2128376278]
+position = Vector2(50, -1949)
+collision_layer = 4
+script = ExtResource("9_ni2lo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeTransferencias/AreaTeleporte12" unique_id=1533034530]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_yan1i")
+debug_color = Color(10.651967, 10.651967, 9.806819, 0)
+
+[node name="AreaTeleporte3" parent="AreaDeTransferencias" unique_id=2018576560 node_paths=PackedStringArray("areaDeSaida") instance=ExtResource("17_qucpo")]
+position = Vector2(27, -548)
+areaDeSaida = NodePath("../AreaTeleporte4")
+
+[node name="AreaTeleporte15" parent="AreaDeTransferencias" unique_id=534103407 node_paths=PackedStringArray("areaDeSaida") instance=ExtResource("17_qucpo")]
+position = Vector2(78, -962)
+areaDeSaida = NodePath("../AreaTeleporte6")
+
+[node name="AreaTeleporte14" type="Area2D" parent="AreaDeTransferencias" unique_id=1093509484]
+position = Vector2(50, -2154)
+collision_layer = 4
+script = ExtResource("9_ni2lo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeTransferencias/AreaTeleporte14" unique_id=1688027350]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_yan1i")
+debug_color = Color(10.651967, 10.651967, 9.806819, 0)
+
+[node name="AreaTeleporte5" parent="AreaDeTransferencias" unique_id=1038493411 node_paths=PackedStringArray("areaDeSaida") instance=ExtResource("17_qucpo")]
+position = Vector2(91, -1241)
+areaDeSaida = NodePath("../AreaTeleporte8")
+
+[node name="AreaTeleporte7" parent="AreaDeTransferencias" unique_id=675024102 node_paths=PackedStringArray("areaDeSaida") instance=ExtResource("17_qucpo")]
+position = Vector2(47, -1473)
+areaDeSaida = NodePath("../AreaTeleporte10")
+
+[node name="AreaTeleporte9" parent="AreaDeTransferencias" unique_id=1662414417 node_paths=PackedStringArray("areaDeSaida") instance=ExtResource("17_qucpo")]
+position = Vector2(96, -1716)
+areaDeSaida = NodePath("../AreaTeleporte12")
+
+[node name="AreaTeleporte11" parent="AreaDeTransferencias" unique_id=1666345977 node_paths=PackedStringArray("areaDeSaida") instance=ExtResource("17_qucpo")]
+position = Vector2(92, -1978)
+areaDeSaida = NodePath("../AreaTeleporte14")
+
+[node name="AreaTeleporte13" parent="AreaDeTransferencias" unique_id=124845193 instance=ExtResource("17_qucpo")]
+position = Vector2(118, -619)
+
+[node name="AreaTeleporte16" parent="AreaDeTransferencias" unique_id=1925596410 instance=ExtResource("17_qucpo")]
+position = Vector2(39, -399)
+
+[node name="AreaTeleporte17" parent="AreaDeTransferencias" unique_id=1059263253 instance=ExtResource("17_qucpo")]
+position = Vector2(43, -1298)
+
+[node name="AreaTeleporte18" parent="AreaDeTransferencias" unique_id=2095771731 instance=ExtResource("17_qucpo")]
+position = Vector2(47, -1568)
+
+[node name="AreaTeleporte19" parent="AreaDeTransferencias" unique_id=876273909 instance=ExtResource("17_qucpo")]
+position = Vector2(96, -1786)
+
+[node name="AreaTeleporte20" parent="AreaDeTransferencias" unique_id=1060778035 instance=ExtResource("17_qucpo")]
+position = Vector2(49, -1927)
+
+[node name="AreaTeleporte21" parent="AreaDeTransferencias" unique_id=1566610860 instance=ExtResource("17_qucpo")]
+position = Vector2(49, -2132)
+
 [node name="AreaPuloAlto" type="Node2D" parent="." unique_id=1549185238]
 
-[node name="AreaPraPularMaisAlto" type="Area2D" parent="AreaPuloAlto" unique_id=1401963174]
-position = Vector2(43, 14)
-collision_layer = 8
-script = ExtResource("10_kwde5")
+[node name="AreaPraPularMaisAlto" parent="AreaPuloAlto" unique_id=436436832 instance=ExtResource("18_qucpo")]
+position = Vector2(43, 15)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPuloAlto/AreaPraPularMaisAlto" unique_id=1327022475]
-scale = Vector2(0.2, 0.2)
-shape = SubResource("RectangleShape2D_57qmd")
-debug_color = Color(18.892157, 0, 18.892157, 0)
-
-[node name="AreaPraPularMaisAlto3" type="Area2D" parent="AreaPuloAlto" unique_id=353384123]
+[node name="AreaPraPularMaisAlto9" parent="AreaPuloAlto" unique_id=2117782225 instance=ExtResource("18_qucpo")]
 position = Vector2(69, -387)
-collision_layer = 8
-script = ExtResource("10_kwde5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPuloAlto/AreaPraPularMaisAlto3" unique_id=960522058]
-scale = Vector2(0.2, 0.2)
-shape = SubResource("RectangleShape2D_57qmd")
-debug_color = Color(18.892157, 0, 18.892157, 0)
-
-[node name="AreaPraPularMaisAlto4" type="Area2D" parent="AreaPuloAlto" unique_id=265914494]
+[node name="AreaPraPularMaisAlto3" parent="AreaPuloAlto" unique_id=1625395669 instance=ExtResource("18_qucpo")]
 position = Vector2(60, -446)
-collision_layer = 8
-script = ExtResource("10_kwde5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPuloAlto/AreaPraPularMaisAlto4" unique_id=1166004398]
-scale = Vector2(0.2, 0.2)
-shape = SubResource("RectangleShape2D_57qmd")
-debug_color = Color(18.892157, 0, 18.892157, 0)
+[node name="AreaPraPularMaisAlto4" parent="AreaPuloAlto" unique_id=2003894245 instance=ExtResource("18_qucpo")]
+position = Vector2(82, -17)
 
-[node name="AreaPraPularMaisAlto2" type="Area2D" parent="AreaPuloAlto" unique_id=1493059125]
-position = Vector2(77, -19)
-collision_layer = 8
-script = ExtResource("10_kwde5")
+[node name="AreaPraPularMaisAlto2" parent="AreaPuloAlto" unique_id=322022478 instance=ExtResource("18_qucpo")]
+position = Vector2(46, -616)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPuloAlto/AreaPraPularMaisAlto2" unique_id=644893481]
-scale = Vector2(0.2, 0.2)
-shape = SubResource("RectangleShape2D_57qmd")
-debug_color = Color(18.892157, 0, 18.892157, 0)
+[node name="AreaPraPularMaisAlto5" parent="AreaPuloAlto" unique_id=835931758 instance=ExtResource("18_qucpo")]
+position = Vector2(77, -687)
+
+[node name="AreaPraPularMaisAlto6" parent="AreaPuloAlto" unique_id=533593279 instance=ExtResource("18_qucpo")]
+position = Vector2(87, -896)
+
+[node name="AreaPraPularMaisAlto7" parent="AreaPuloAlto" unique_id=1672587043 instance=ExtResource("18_qucpo")]
+z_index = -4096
+position = Vector2(100, -1906)
 
 [node name="Suportes" type="Node2D" parent="." unique_id=1693499535]
 
@@ -706,8 +842,108 @@ collision_layer = 2
 position = Vector2(-3, -68.4702)
 shape = SubResource("RectangleShape2D_3gngh")
 
+[node name="Limites3" type="Node2D" parent="." unique_id=1752018118]
+position = Vector2(8, -1122)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Limites3" unique_id=1813178513]
+z_index = -640
+texture_filter = 1
+position = Vector2(-16, -108.99998)
+scale = Vector2(1, 1.1464845)
+texture = ExtResource("15_467t4")
+
+[node name="LIMITE" type="StaticBody2D" parent="Limites3/Sprite2D2" unique_id=1732708030]
+position = Vector2(41, -0.4361158)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites3/Sprite2D2/LIMITE" unique_id=649582155]
+position = Vector2(-3, -68.4702)
+shape = SubResource("RectangleShape2D_3gngh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Limites3" unique_id=513971385]
+z_index = -256
+texture_filter = 1
+position = Vector2(153, -107)
+scale = Vector2(1, 1.1738281)
+texture = ExtResource("15_467t4")
+
+[node name="LIMITE" type="StaticBody2D" parent="Limites3/Sprite2D" unique_id=329075847]
+position = Vector2(-29, 0.85191345)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites3/Sprite2D/LIMITE" unique_id=1923307956]
+position = Vector2(-3, -68.4702)
+shape = SubResource("RectangleShape2D_3gngh")
+
+[node name="Limites4" type="Node2D" parent="." unique_id=265826790]
+position = Vector2(8, -1687)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Limites4" unique_id=1072343990]
+z_index = -640
+texture_filter = 1
+position = Vector2(-16, -108.99998)
+scale = Vector2(1, 1.1464845)
+texture = ExtResource("15_467t4")
+
+[node name="LIMITE" type="StaticBody2D" parent="Limites4/Sprite2D2" unique_id=855003113]
+position = Vector2(41, -0.4361158)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites4/Sprite2D2/LIMITE" unique_id=1154821587]
+position = Vector2(-3, -68.4702)
+shape = SubResource("RectangleShape2D_3gngh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Limites4" unique_id=1086599700]
+z_index = -256
+texture_filter = 1
+position = Vector2(153, -107)
+scale = Vector2(1, 1.1738281)
+texture = ExtResource("15_467t4")
+
+[node name="LIMITE" type="StaticBody2D" parent="Limites4/Sprite2D" unique_id=386845986]
+position = Vector2(-29, 0.85191345)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites4/Sprite2D/LIMITE" unique_id=1636170244]
+position = Vector2(-3, -68.4702)
+shape = SubResource("RectangleShape2D_3gngh")
+
+[node name="Limites5" type="Node2D" parent="." unique_id=1740779087]
+position = Vector2(8, -2258)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Limites5" unique_id=760130055]
+z_index = -640
+texture_filter = 1
+position = Vector2(-16, -108.99998)
+scale = Vector2(1, 1.1464845)
+texture = ExtResource("15_467t4")
+
+[node name="LIMITE" type="StaticBody2D" parent="Limites5/Sprite2D2" unique_id=699457213]
+position = Vector2(41, -0.4361158)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites5/Sprite2D2/LIMITE" unique_id=503301726]
+position = Vector2(-3, -68.4702)
+shape = SubResource("RectangleShape2D_3gngh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Limites5" unique_id=1762038760]
+z_index = -256
+texture_filter = 1
+position = Vector2(153, -107)
+scale = Vector2(1, 1.1738281)
+texture = ExtResource("15_467t4")
+
+[node name="LIMITE" type="StaticBody2D" parent="Limites5/Sprite2D" unique_id=744718733]
+position = Vector2(-29, 0.85191345)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites5/Sprite2D/LIMITE" unique_id=1792199161]
+position = Vector2(-3, -68.4702)
+shape = SubResource("RectangleShape2D_3gngh")
+
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=75667251]
 position = Vector2(15, 84)
+color = Color(0.32024857, 0.32024857, 0.47581574, 1)
 
 [node name="UI" type="Control" parent="." unique_id=1104801810]
 layout_mode = 3
@@ -723,19 +959,15 @@ script = ExtResource("21_5efat")
 canvas = NodePath("CanvasLayer")
 
 [node name="CanvasLayer" parent="UI/Dialogo" unique_id=2044932274 instance=ExtResource("1_b3l1h")]
+visible = false
 
-[connection signal="body_entered" from="AreaDeTransferencias/AreaTeleporte" to="AreaDeTransferencias/AreaTeleporte" method="_on_body_entered"]
-[connection signal="body_entered" from="AreaDeTransferencias/AreaTeleporte3" to="AreaDeTransferencias/AreaTeleporte3" method="_on_body_entered"]
 [connection signal="body_entered" from="AreaDeTransferencias/AreaTeleporte4" to="AreaDeTransferencias/AreaTeleporte4" method="_on_body_entered"]
 [connection signal="body_entered" from="AreaDeTransferencias/AreaTeleporte2" to="AreaDeTransferencias/AreaTeleporte2" method="_on_body_entered"]
-[connection signal="body_entered" from="AreaPuloAlto/AreaPraPularMaisAlto" to="AreaPuloAlto/AreaPraPularMaisAlto" method="_on_body_entered"]
-[connection signal="body_exited" from="AreaPuloAlto/AreaPraPularMaisAlto" to="AreaPuloAlto/AreaPraPularMaisAlto" method="_on_body_exited"]
-[connection signal="body_entered" from="AreaPuloAlto/AreaPraPularMaisAlto3" to="AreaPuloAlto/AreaPraPularMaisAlto3" method="_on_body_entered"]
-[connection signal="body_exited" from="AreaPuloAlto/AreaPraPularMaisAlto3" to="AreaPuloAlto/AreaPraPularMaisAlto3" method="_on_body_exited"]
-[connection signal="body_entered" from="AreaPuloAlto/AreaPraPularMaisAlto4" to="AreaPuloAlto/AreaPraPularMaisAlto4" method="_on_body_entered"]
-[connection signal="body_exited" from="AreaPuloAlto/AreaPraPularMaisAlto4" to="AreaPuloAlto/AreaPraPularMaisAlto4" method="_on_body_exited"]
-[connection signal="body_entered" from="AreaPuloAlto/AreaPraPularMaisAlto2" to="AreaPuloAlto/AreaPraPularMaisAlto2" method="_on_body_entered"]
-[connection signal="body_exited" from="AreaPuloAlto/AreaPraPularMaisAlto2" to="AreaPuloAlto/AreaPraPularMaisAlto2" method="_on_body_exited"]
+[connection signal="body_entered" from="AreaDeTransferencias/AreaTeleporte6" to="AreaDeTransferencias/AreaTeleporte6" method="_on_body_entered"]
+[connection signal="body_entered" from="AreaDeTransferencias/AreaTeleporte8" to="AreaDeTransferencias/AreaTeleporte8" method="_on_body_entered"]
+[connection signal="body_entered" from="AreaDeTransferencias/AreaTeleporte10" to="AreaDeTransferencias/AreaTeleporte10" method="_on_body_entered"]
+[connection signal="body_entered" from="AreaDeTransferencias/AreaTeleporte12" to="AreaDeTransferencias/AreaTeleporte12" method="_on_body_entered"]
+[connection signal="body_entered" from="AreaDeTransferencias/AreaTeleporte14" to="AreaDeTransferencias/AreaTeleporte14" method="_on_body_entered"]
 
 [editable path="Barreiras/BarreiraComWALL2"]
 [editable path="Barreiras/BarreiraComWALL3"]

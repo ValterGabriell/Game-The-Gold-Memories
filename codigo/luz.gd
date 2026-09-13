@@ -28,6 +28,10 @@ func _on_body_exited(body: Node2D) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("coletar") and _jogadorTaNaAreaPraColetar:
+		if audioStreamPlayer2D.playing:
+			var tween = create_tween()
+			tween.tween_property(audioStreamPlayer2D, "volume_db", 0.0, 0.5) 
+		
 		SignalManager.emitir_evt_coletou_luz(numeroDaLuz)
 
 

@@ -70,3 +70,28 @@ debug_color = Color(1, 0, 0, 0)
 position = Vector2(10, 32)
 shape = SubResource("RectangleShape2D_g4v7s")
 debug_color = Color(1, 0, 0, 0)
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="." unique_id=497832074]
+position = Vector2(4, 38)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="." unique_id=262538789]
+position = Vector2(-4, 38)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="." unique_id=656563620]
+position = Vector2(-12, 38)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="." unique_id=295899927]
+position = Vector2(-18, 38)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="." unique_id=1406111718]
+position = Vector2(-24, 40)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0, 0, 0)

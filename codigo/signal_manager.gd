@@ -12,13 +12,16 @@ const DIALOG_EVENT_BY_LIGHT: Dictionary = {
 signal flag_evt_coletou_luz(numero_luz: int)
 signal flag_evt_coletou_primeira_luz
 signal flag_evt_coletou_segunda_luz
+signal flag_evt_coletou_terceira_luz
 signal evt_primeiro_dialogo_finalizado
 signal evt_segundo_dialogo_finalizado
+signal evt_terceiro_dialogo_finalizado
 signal evt_dialogo_finalizado(deveTirarALuz:bool,numeroLuz: int)
 signal evt_dialogo_payload_iniciado(texts_to_display: Array[String], event_name: String, numero_luz: int)
 signal evt_primeiro_dialogo_iniciado(texts_to_display: Array[String], event_name: String)
 signal evt_dialogo_iniciado
 signal evt_segundo_dialogo_iniciado(texts_to_display: Array[String], event_name: String)
+signal evt_terceiro_dialogo_iniciado(texts_to_display: Array[String], event_name: String)
 signal evt_interacao_luz_iniciada(numero_luz: int)
 signal evt_interacao_luz_finalizada(numero_luz: int)
 
@@ -39,6 +42,8 @@ func emitir_evt_coletou_luz(numero_luz: int) -> void:
 			emit_signal("flag_evt_coletou_primeira_luz")
 		2:
 			emit_signal("flag_evt_coletou_segunda_luz")
+		3:
+			emit_signal("flag_evt_coletou_terceira_luz")
 
 func emitir_evt_coletou_primeira_luz() -> void:
 	emitir_evt_coletou_luz(1)
@@ -60,6 +65,8 @@ func emitir_evt_dialogo_iniciado_por_luz(numero_luz: int) -> void:
 			emit_signal("evt_primeiro_dialogo_iniciado", texts_to_display, event_name)
 		2:
 			emit_signal("evt_segundo_dialogo_iniciado", texts_to_display, event_name)
+		3:
+			emit_signal("evt_terceiro_dialogo_iniciado", texts_to_display, event_name)
 
 	emit_signal("evt_dialogo_iniciado")
 
@@ -69,6 +76,8 @@ func emitir_evt_dialogo_finalizado_por_luz(numero_luz: int) -> void:
 			emit_signal("evt_primeiro_dialogo_finalizado")
 		2:
 			emit_signal("evt_segundo_dialogo_finalizado")
+		3:
+			emit_signal("evt_terceiro_dialogo_finalizado")
 
 	emit_signal("evt_dialogo_finalizado", true, numero_luz)
 
@@ -78,6 +87,9 @@ func emitir_evt_primeiro_dialogo_finalizado() -> void:
 func emitir_evt_segundo_dialogo_finalizado() -> void:
 	emitir_evt_dialogo_finalizado_por_luz(2)
 
+func emitir_evt_terceiro_dialogo_finalizado() -> void:
+	emitir_evt_dialogo_finalizado_por_luz(3)
+
 
 
 func emitir_evt_primeiro_dialogo_iniciado() -> void:
@@ -85,6 +97,9 @@ func emitir_evt_primeiro_dialogo_iniciado() -> void:
 
 func emitir_evt_segundo_dialogo_iniciado() -> void:
 	emitir_evt_dialogo_iniciado_por_luz(2)
+
+func emitir_evt_terceiro_dialogo_iniciado() -> void:
+	emitir_evt_dialogo_iniciado_por_luz(3)
 
 func emitir_evt_interacao_luz_iniciada(numero_luz: int) -> void:
 	emit_signal("evt_interacao_luz_iniciada", numero_luz)

@@ -44,6 +44,7 @@ animations = [{
 }]
 
 [node name="AreaQuePersegue" type="Area2D" unique_id=1707055331 node_paths=PackedStringArray("animatedSprite", "audioStreamPlayer2D")]
+z_index = 4096
 collision_layer = 16
 collision_mask = 3
 script = ExtResource("1_jge3u")

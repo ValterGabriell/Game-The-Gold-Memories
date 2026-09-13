@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cnns1nt24iaao"]
+
+[ext_resource type="Script" uid="uid://barngw3c7kqd5" path="res://codigo/area_entrada_saida.gd" id="1_g0ac4"]
+[ext_resource type="Texture2D" uid="uid://cy2hn77re07xk" path="res://arte/teleporte.png" id="2_pf0f8"]
+[ext_resource type="Texture2D" uid="uid://rdgjlqqchivb" path="res://arte/luz/light2D-vector.png" id="3_g7dgu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yan1i"]
+size = Vector2(26, 24)
+
+[node name="AreaTeleporte" type="Area2D" unique_id=1555756234]
+collision_layer = 4
+script = ExtResource("1_g0ac4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2119432337]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_yan1i")
+debug_color = Color(10.651967, 10.651967, 9.806819, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=906318166]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("2_pf0f8")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2093538607]
+position = Vector2(13, 0)
+color = Color(0.05882353, 0.05882353, 0.105882354, 1)
+energy = 8.11
+texture = ExtResource("3_g7dgu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

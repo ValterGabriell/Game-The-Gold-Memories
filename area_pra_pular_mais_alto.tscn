@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://cigr3i2fw31x0"]
+
+[ext_resource type="Script" uid="uid://de8amkhy241sl" path="res://codigo/area_pra_pular_mais_alto.gd" id="1_kna6k"]
+[ext_resource type="Texture2D" uid="uid://h6rkxf33vot3" path="res://arte/jumo_high.png" id="2_m8n0r"]
+[ext_resource type="Texture2D" uid="uid://dpc1ygmjkvbh5" path="res://arte/luz/light2D-gradient.png" id="3_s0nco"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0nco"]
+atlas = ExtResource("2_m8n0r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghguk"]
+atlas = ExtResource("2_m8n0r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei0jk"]
+atlas = ExtResource("2_m8n0r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tub0m"]
+atlas = ExtResource("2_m8n0r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kna6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0nco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghguk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei0jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tub0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei0jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghguk")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AreaPraPularMaisAlto" type="Area2D" unique_id=2030152503]
+collision_layer = 8
+script = ExtResource("1_kna6k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=180948200]
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_57qmd")
+debug_color = Color(18.892157, 0, 18.892157, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1589716976]
+position = Vector2(0, -0.99999994)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_kna6k")
+autoplay = "default"
+frame_progress = 0.2926949
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1063008462]
+color = Color(0.3372549, 0.3529412, 0.45882353, 1)
+energy = 0.2
+texture = ExtResource("3_s0nco")
+texture_scale = 0.2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://cg736tquq7dun"]
 
 [ext_resource type="Script" uid="uid://b7yyv86fxfs8k" path="res://codigo/luz.gd" id="1_dgnv0"]
-[ext_resource type="Texture2D" uid="uid://ckyehfg2a6plk" path="res://icon.svg" id="2_0cwt1"]
+[ext_resource type="Texture2D" uid="uid://c1lltyc55spxr" path="res://arte/ssaaaaluz.png" id="2_rtowx"]
 [ext_resource type="AudioStream" uid="uid://d0i7nncwu3k55" path="res://arte/msc/song_to_read.wav" id="3_0cwt1"]
+[ext_resource type="Texture2D" uid="uid://b650cumvbhuq3" path="res://arte/spt/dark/dark.png" id="4_rtowx"]
+[ext_resource type="Texture2D" uid="uid://dpc1ygmjkvbh5" path="res://arte/luz/light2D-gradient.png" id="5_rflat"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wjoo6"]
 radius = 6.0827627
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(869, 47)
 
 [node name="Luz" type="Area2D" unique_id=1303959823 node_paths=PackedStringArray("audioStreamPlayer2D")]
 script = ExtResource("1_dgnv0")
@@ -15,14 +20,31 @@ audioStreamPlayer2D = NodePath("AudioStreamPlayer2D")
 shape = SubResource("CircleShape2D_wjoo6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1981831141]
-scale = Vector2(0.0859375, 0.0703125)
-texture = ExtResource("2_0cwt1")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rtowx")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1147024124]
 stream = ExtResource("3_0cwt1")
+volume_db = -10.0
 autoplay = true
-max_distance = 200.0
-attenuation = 2.3784153
+max_distance = 50.0
+attenuation = 1.7411023
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1731329221]
+position = Vector2(3, 39)
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=2064630517]
+position = Vector2(-2, -173)
+scale = Vector2(1, 3.015625)
+texture = ExtResource("4_rtowx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=122589002]
+position = Vector2(-2.5, -99.5)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1144783400]
+texture = ExtResource("5_rflat")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
