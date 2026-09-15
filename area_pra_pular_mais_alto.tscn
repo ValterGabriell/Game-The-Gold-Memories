@@ -68,7 +68,7 @@ frame_progress = 0.2926949
 color = Color(0.3372549, 0.3529412, 0.45882353, 1)
 energy = 0.2
 texture = ExtResource("3_s0nco")
-texture_scale = 0.2
+texture_scale = 0.3
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

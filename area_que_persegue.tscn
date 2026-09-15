@@ -58,14 +58,13 @@ debug_color = Color(0.669451, 0.3898792, 1.0845727, 0)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2071233450]
 texture_filter = 1
-position = Vector2(30, 47.000008)
-scale = Vector2(1.2109375, 1.5156251)
+position = Vector2(1471.5552, 980.875)
+scale = Vector2(14.402269, 30.441402)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
-frame = 1
-frame_progress = 0.72076976
+frame_progress = 0.655195
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1424469763]
 stream = ExtResource("3_nsvt3")
-volume_db = 5.0
+volume_db = -15.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

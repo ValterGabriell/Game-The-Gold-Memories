@@ -20,6 +20,7 @@ enum CameraShakeState {
 var _camera_shake_state: CameraShakeState = CameraShakeState.INACTIVE
 var _intensidade_tremor_atual: float = 0.0
 var _interacoes_luz_ativas: int = 0
+var _has_played_monster_focus_sequence: bool = false
 
 func _ready() -> void:
 	SignalManager.evt_dialogo_finalizado.connect(_on_dialogo_finalizado)
@@ -74,12 +75,16 @@ func _atualizar_tremor_em_jogo(delta: float) -> void:
 	)
 
 func _on_dialogo_finalizado(_deve_tirar_a_luz: bool, _numero_luz: int) -> void:
+	if _numero_luz != 1 or _has_played_monster_focus_sequence:
+		return
+
 	if _sequencia_camera_em_andamento:
 		return
 
 	_sequencia_camera_em_andamento = true
 	await _executar_sequencia_camera_pos_dialogo()
 	_sequencia_camera_em_andamento = false
+	_has_played_monster_focus_sequence = true
 
 func _executar_sequencia_camera_pos_dialogo() -> void:
 	# Fallback: Tenta buscar o nó do monstro pelo grupo caso não tenha sido atribuído no Inspetor

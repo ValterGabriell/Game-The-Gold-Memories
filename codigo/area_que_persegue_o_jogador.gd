@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 				velocidade_perseguição = 20.0
 
 		position.y -= velocidade_perseguição * delta
-		audioStreamPlayer2D.volume_db = move_toward(audioStreamPlayer2D.volume_db, 0.0, 40.0 * delta)
+		audioStreamPlayer2D.volume_db = move_toward(audioStreamPlayer2D.volume_db, -15, 40.0 * delta)
 		if not animatedSprite.is_playing():
 			animatedSprite.play("default")
 	elif estado_atual == Estado.PARADO or estado_atual == Estado.PAUSADO_POR_DIALOGO:

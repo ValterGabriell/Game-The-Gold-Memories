@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://dsq58wrdtobwv"]
+
+[ext_resource type="Script" uid="uid://oabxdj8p42b0" path="res://intro.gd" id="1_33sem"]
+[ext_resource type="Texture2D" uid="uid://hiyjbp1km1bk" path="res://arte/gbjam.png" id="1_gjrx4"]
+[ext_resource type="FontFile" uid="uid://bx2ykakypgdsx" path="res://arte/fontes/pix32/Pix32.ttf" id="2_33sem"]
+[ext_resource type="AudioStream" uid="uid://xmnsl0dpu6dd" path="res://arte/msc/introsong.wav" id="4_33sem"]
+
+[node name="Intro" type="CanvasLayer" unique_id=1198808640 node_paths=PackedStringArray("audio", "fade_rect")]
+script = ExtResource("1_33sem")
+audio = NodePath("AudioStreamPlayer2D")
+fade_rect = NodePath("ColorRect")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1053098617]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1064340636]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=70344986]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label5" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1113501136]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.3372549, 0.3529412, 0.45882353, 1)
+theme_override_colors/font_outline_color = Color(0.7764706, 0.7176471, 0.74509805, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_33sem")
+theme_override_font_sizes/font_size = 21
+text = "GBJAM14"
+
+[node name="Label8" type="Label" parent="MarginContainer/VBoxContainer" unique_id=575563783]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.3372549, 0.3529412, 0.45882353, 1)
+theme_override_colors/font_outline_color = Color(0.7764706, 0.7176471, 0.74509805, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_33sem")
+theme_override_font_sizes/font_size = 12
+text = "The [G]Old Memories"
+
+[node name="Label6" type="Label" parent="MarginContainer/VBoxContainer" unique_id=230023802]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.3372549, 0.3529412, 0.45882353, 1)
+theme_override_colors/font_outline_color = Color(0.7764706, 0.7176471, 0.74509805, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_33sem")
+theme_override_font_sizes/font_size = 12
+text = "Developed By"
+
+[node name="Label7" type="Label" parent="MarginContainer/VBoxContainer" unique_id=216463525]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.3372549, 0.3529412, 0.45882353, 1)
+theme_override_colors/font_outline_color = Color(0.7764706, 0.7176471, 0.74509805, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_33sem")
+theme_override_font_sizes/font_size = 12
+text = "Gabori"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=910668023]
+z_index = -4096
+position = Vector2(812.25, 423.75003)
+scale = Vector2(11.534374, 7.128473)
+texture = ExtResource("1_gjrx4")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1576482958]
+stream = ExtResource("4_33sem")
+volume_db = -30.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2109228239]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05882353, 0.05882353, 0.105882354, 1)

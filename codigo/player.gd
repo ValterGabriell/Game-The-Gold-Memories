@@ -4,7 +4,8 @@ extends CharacterBody2D
 enum JumpType {
 	NONE,
 	SHORT,
-	LONG
+	LONG,
+	END_GAME
 }
 
 enum ControlState {
@@ -13,9 +14,20 @@ enum ControlState {
 	LOCKED_BY_CAMERA
 }
 
+enum EndGameState {
+	INACTIVE,
+	ARMED,
+	TRANSITIONING
+}
+
 const SPEED = 50.0
 const JUMP_VELOCITY: float = -130.0
-const JUMP_WHEN_CAN_GO_UPPER: float = -300
+const JUMP_WHEN_CAN_GO_UPPER: float = -200
+const LONG_JUMP_HOLD_TIME: float = 0.3
+const END_GAME_TIME_SCALE: float = 0.5
+const END_GAME_CREDITS_SCENE_PATH: String = "res://creditos.tscn"
+const END_GAME_FADE_DURATION: float = 4.8
+const END_GAME_FADE_COLOR: Color = Color("#fafbf6")
 
 const GRAVITY_WALL: float = 60.0
 const WALL_JUMP_PUSH_FORCE: float = 120.0
@@ -28,6 +40,7 @@ const WALL_JUMP_LOCK_TIME: float = 0.1
 var look_dir_x: int = 1 
 
 var control_state: ControlState = ControlState.PLAYER_CONTROLLED
+var end_game_state: EndGameState = EndGameState.INACTIVE
 
 @export var max_jump_time: float = 0.12
 var jump_timer: float = 0.0
@@ -39,11 +52,13 @@ const SFX_WALK = preload("res://arte/msc/walk.mp3")
 const SFX_JUMP = preload("res://arte/msc/jump.mp3")
 const SFX_JUMP_HIGH = preload("res://arte/msc/jump-high_square.mp3")
 const SFX_GAME_OVER = preload("res://arte/msc/gameo_over.wav")
+const SFX_END_GAME = preload("res://arte/msc/end_game.wav")
 
 var _walk_player: AudioStreamPlayer2D
 var _jump_player: AudioStreamPlayer2D
 var _jump_high_player: AudioStreamPlayer2D
 var _game_over_player: AudioStreamPlayer
+var _end_game_player: AudioStreamPlayer
 
 # ELEMENTOS VISUAIS PARA TRANSICAO (FADE)
 var _canvas_layer: CanvasLayer
@@ -57,19 +72,28 @@ func _ready() -> void:
 	# Criação dos nós de áudio
 	_walk_player = AudioStreamPlayer2D.new()
 	_walk_player.stream = SFX_WALK
+	_walk_player.volume_db = -15
 	add_child(_walk_player)
 
 	_jump_player = AudioStreamPlayer2D.new()
 	_jump_player.stream = SFX_JUMP
+	_jump_player.volume_db = -10
 	add_child(_jump_player)
 
 	_jump_high_player = AudioStreamPlayer2D.new()
 	_jump_high_player.stream = SFX_JUMP_HIGH
+	_jump_high_player.volume_db = -10
 	add_child(_jump_high_player)
 
 	_game_over_player = AudioStreamPlayer.new()
 	_game_over_player.stream = SFX_GAME_OVER
+	_game_over_player.volume_db = -10
 	add_child(_game_over_player)
+
+	_end_game_player = AudioStreamPlayer.new()
+	_end_game_player.stream = SFX_END_GAME
+	_end_game_player.volume_db = -20
+	add_child(_end_game_player)
 
 	# Criação do Overlay de Fade em código
 	_canvas_layer = CanvasLayer.new()
@@ -89,6 +113,59 @@ func set_control_state(new_state: ControlState) -> void:
 	control_state = new_state
 	if control_state != ControlState.PLAYER_CONTROLLED and _walk_player and _walk_player.playing:
 		_walk_player.stop()
+
+func arm_end_game_jump() -> void:
+	if end_game_state == EndGameState.INACTIVE:
+		end_game_state = EndGameState.ARMED
+
+func _get_jump_velocity() -> float:
+	if end_game_state == EndGameState.ARMED or end_game_state == EndGameState.TRANSITIONING:
+		return JUMP_WHEN_CAN_GO_UPPER
+
+	return JUMP_WHEN_CAN_GO_UPPER if jump_type == JumpType.LONG else JUMP_VELOCITY
+
+func _get_jump_hold_time() -> float:
+	if end_game_state == EndGameState.INACTIVE and jump_type == JumpType.LONG:
+		return LONG_JUMP_HOLD_TIME
+
+	return max_jump_time
+
+func _start_end_game_transition() -> void:
+	if end_game_state != EndGameState.TRANSITIONING:
+		return
+
+	Engine.time_scale = END_GAME_TIME_SCALE
+	set_control_state(ControlState.LOCKED_BY_DIALOG)
+	_stop_all_playing_audio(_end_game_player)
+	_end_game_player.play()
+
+	_fade_rect.color = Color(END_GAME_FADE_COLOR.r, END_GAME_FADE_COLOR.g, END_GAME_FADE_COLOR.b, 0.0)
+	var tween = create_tween()
+	tween.tween_property(_fade_rect, "color:a", 1.0, END_GAME_FADE_DURATION)
+	await tween.finished
+
+	Engine.time_scale = 1.0
+	get_tree().change_scene_to_file(END_GAME_CREDITS_SCENE_PATH)
+
+func _stop_all_playing_audio(except_player: Node = null) -> void:
+	_stop_playing_audio_in_node(get_tree().current_scene, except_player)
+
+func _stop_playing_audio_in_node(node: Node, except_player: Node) -> void:
+	if node == null:
+		return
+
+	if node != except_player:
+		if node is AudioStreamPlayer:
+			var audio_player := node as AudioStreamPlayer
+			if audio_player.playing:
+				audio_player.stop()
+		elif node is AudioStreamPlayer2D:
+			var audio_player_2d := node as AudioStreamPlayer2D
+			if audio_player_2d.playing:
+				audio_player_2d.stop()
+
+	for child in node.get_children():
+		_stop_playing_audio_in_node(child, except_player)
 
 func _physics_process(delta: float) -> void:
 	if control_state != ControlState.PLAYER_CONTROLLED:
@@ -112,24 +189,32 @@ func _physics_process(delta: float) -> void:
 	# LÓGICA DO PULO COM SOM
 	if Input.is_action_just_pressed("ui_accept"):
 		if is_on_floor():
-			velocity.y = JUMP_WHEN_CAN_GO_UPPER if jump_type == JumpType.LONG else JUMP_VELOCITY
+			velocity.y = _get_jump_velocity()
 			is_jumping = true
 			jump_timer = 0.0
 			_tocar_som_pulo()
+			if end_game_state == EndGameState.ARMED:
+				end_game_state = EndGameState.TRANSITIONING
+				_start_end_game_transition()
 		elif wall_jump_coyote_timer > 0.0:
-			velocity.y = JUMP_WHEN_CAN_GO_UPPER if jump_type == JumpType.LONG else JUMP_VELOCITY
+			velocity.y = _get_jump_velocity()
 			velocity.x = 0.0
 			wall_jump_lock = WALL_JUMP_LOCK_TIME
 			is_jumping = true
 			jump_timer = 0.0
 			wall_jump_coyote_timer = 0.0 
 			_tocar_som_pulo()
+			if end_game_state == EndGameState.ARMED:
+				end_game_state = EndGameState.TRANSITIONING
+				_start_end_game_transition()
 
 	if Input.is_action_pressed("ui_accept") and is_jumping:
 		jump_timer += delta
-		if jump_timer < max_jump_time:
-			velocity.y = JUMP_WHEN_CAN_GO_UPPER if jump_type == JumpType.LONG else JUMP_VELOCITY
+		if jump_timer < _get_jump_hold_time():
+			velocity.y = _get_jump_velocity()
 		else:
+			if end_game_state == EndGameState.INACTIVE and jump_type == JumpType.LONG:
+				velocity.y = JUMP_VELOCITY
 			is_jumping = false
 
 	if Input.is_action_just_released("ui_accept"):
@@ -194,4 +279,5 @@ func morrer() -> void:
 	await tween.finished
 	
 	# 3. Reinicia a cena atual imediatamente
+	Engine.time_scale = 1.0
 	get_tree().reload_current_scene()

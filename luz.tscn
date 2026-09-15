@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://c1lltyc55spxr" path="res://arte/ssaaaaluz.png" id="2_rtowx"]
 [ext_resource type="AudioStream" uid="uid://d0i7nncwu3k55" path="res://arte/msc/song_to_read.wav" id="3_0cwt1"]
 [ext_resource type="Texture2D" uid="uid://b650cumvbhuq3" path="res://arte/spt/dark/dark.png" id="4_rtowx"]
-[ext_resource type="Texture2D" uid="uid://dpc1ygmjkvbh5" path="res://arte/luz/light2D-gradient.png" id="5_rflat"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wjoo6"]
 radius = 6.0827627
@@ -25,7 +24,7 @@ texture = ExtResource("2_rtowx")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1147024124]
 stream = ExtResource("3_0cwt1")
-volume_db = -10.0
+volume_db = -20.0
 autoplay = true
 max_distance = 50.0
 attenuation = 1.7411023
@@ -42,9 +41,6 @@ texture = ExtResource("4_rtowx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=122589002]
 position = Vector2(-2.5, -99.5)
 shape = SubResource("RectangleShape2D_g4v7s")
-
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1144783400]
-texture = ExtResource("5_rflat")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

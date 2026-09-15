@@ -6,16 +6,13 @@
 [ext_resource type="Script" uid="uid://ccnw7pme5faqn" path="res://codigo/camera_manager.gd" id="1_qucpo"]
 [ext_resource type="PackedScene" uid="uid://bnrhy1qvwsv6t" path="res://barreira.tscn" id="3_c3sxu"]
 [ext_resource type="Script" uid="uid://crkmy5pvibyut" path="res://codigo/camera_do_jogador.gd" id="3_wjoo6"]
-[ext_resource type="Texture2D" uid="uid://bdd28phdnxkdm" path="res://arte/jump.png" id="4_itvv1"]
 [ext_resource type="Texture2D" uid="uid://bok7bqn48itfg" path="res://arte/walk.png" id="4_xg2rw"]
 [ext_resource type="PackedScene" uid="uid://cg736tquq7dun" path="res://luz.tscn" id="7_yan1i"]
 [ext_resource type="Script" uid="uid://cmgap8f1pu37n" path="res://codigo/animacoes_personagem.gd" id="8_3vt2s"]
-[ext_resource type="Texture2D" uid="uid://b5ho41un1y641" path="res://arte/luz/light2D-pixel.png" id="9_b3l1h"]
 [ext_resource type="Script" uid="uid://barngw3c7kqd5" path="res://codigo/area_entrada_saida.gd" id="9_ni2lo"]
 [ext_resource type="PackedScene" uid="uid://dfi4ismcxu8u4" path="res://galho_parede.tscn" id="11_wxgaf"]
 [ext_resource type="PackedScene" uid="uid://8s3tke4hb8qw" path="res://area_que_persegue.tscn" id="13_5efat"]
 [ext_resource type="Texture2D" uid="uid://d1pjkdww2nnp0" path="res://arte/limite.png" id="15_467t4"]
-[ext_resource type="Texture2D" uid="uid://dpc1ygmjkvbh5" path="res://arte/luz/light2D-gradient.png" id="15_qucpo"]
 [ext_resource type="PackedScene" uid="uid://cnns1nt24iaao" path="res://area_teleporte.tscn" id="17_qucpo"]
 [ext_resource type="PackedScene" uid="uid://cigr3i2fw31x0" path="res://area_pra_pular_mais_alto.tscn" id="18_qucpo"]
 [ext_resource type="PackedScene" uid="uid://bqngxwe61yhck" path="res://barreira_galho_02.tscn" id="19_trren"]
@@ -56,29 +53,17 @@ region = Rect2(64, 128, 64, 64)
 atlas = ExtResource("4_xg2rw")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eeue5"]
-atlas = ExtResource("4_itvv1")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_54quw"]
+atlas = ExtResource("4_xg2rw")
+region = Rect2(256, 128, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hcp3l"]
-atlas = ExtResource("4_itvv1")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5w74o"]
+atlas = ExtResource("4_xg2rw")
+region = Rect2(128, 128, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2dwx4"]
-atlas = ExtResource("4_itvv1")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uskpn"]
-atlas = ExtResource("4_itvv1")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lr3c1"]
-atlas = ExtResource("4_itvv1")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ivtk6"]
-atlas = ExtResource("4_itvv1")
-region = Rect2(32, 64, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbq1n"]
+atlas = ExtResource("4_xg2rw")
+region = Rect2(0, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_itvv1"]
 atlas = ExtResource("4_xg2rw")
@@ -136,9 +121,13 @@ region = Rect2(256, 256, 128, 128)
 atlas = ExtResource("4_xg2rw")
 region = Rect2(384, 256, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_54quw"]
-atlas = ExtResource("4_itvv1")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_eeue5"]
+atlas = ExtResource("4_xg2rw")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcp3l"]
+atlas = ExtResource("4_xg2rw")
+region = Rect2(512, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
@@ -181,22 +170,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eeue5")
+"texture": SubResource("AtlasTexture_54quw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hcp3l")
+"texture": SubResource("AtlasTexture_5w74o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2dwx4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uskpn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lr3c1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ivtk6")
+"texture": SubResource("AtlasTexture_cbq1n")
 }],
 "loop": 0,
 "name": &"jump",
@@ -251,7 +231,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_54quw")
+"texture": SubResource("AtlasTexture_eeue5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcp3l")
 }],
 "loop": 1,
 "name": &"wall_jump",
@@ -278,7 +261,7 @@ camera_do_jogador = NodePath("../CharacterBody2D/Codigos/Camera")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1634963222]
 z_index = -650
-position = Vector2(58, -2075)
+position = Vector2(49, 86)
 scale = Vector2(0.3, 0.3)
 collision_mask = 30
 script = ExtResource("1_mxkdn")
@@ -287,7 +270,7 @@ script = ExtResource("1_mxkdn")
 texture_filter = 1
 scale = Vector2(0.35, 0.35)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
-animation = &"wall_jump"
+animation = &"walk"
 speed_scale = 5.0
 flip_h = true
 
@@ -308,22 +291,13 @@ script = ExtResource("8_3vt2s")
 animated = NodePath("../../AnimatedSprite2D")
 player = NodePath("../..")
 
-[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D" unique_id=1058558745]
-position = Vector2(0, -6)
-scale = Vector2(2, 2)
-shadow_color = Color(0, 0, 0.7529412, 0)
-shadow_filter = 1
-shadow_filter_smooth = 16.0
-texture = ExtResource("9_b3l1h")
-texture_scale = 0.1
-
 [node name="Barreiras" type="Node2D" parent="." unique_id=213275482]
 
 [node name="Barreira" parent="Barreiras" unique_id=851626120 instance=ExtResource("3_c3sxu")]
 position = Vector2(49, 93)
 
 [node name="Barreira3" parent="Barreiras" unique_id=537149350 instance=ExtResource("3_c3sxu")]
-position = Vector2(122, 71)
+position = Vector2(116, 71)
 
 [node name="Barreira5" parent="Barreiras" unique_id=222791565 instance=ExtResource("3_c3sxu")]
 position = Vector2(21, 14)
@@ -473,7 +447,10 @@ position = Vector2(60, -435)
 position = Vector2(29, -1392)
 
 [node name="PuloTemporario16" parent="Barreiras2" unique_id=1267026265 instance=ExtResource("23_qucpo")]
-position = Vector2(35, -1603)
+position = Vector2(38, -1603)
+
+[node name="PuloTemporario19" parent="Barreiras2" unique_id=801092933 instance=ExtResource("23_qucpo")]
+position = Vector2(27, -1603)
 
 [node name="PuloTemporario17" parent="Barreiras2" unique_id=1209518315 instance=ExtResource("23_qucpo")]
 position = Vector2(59, -1666)
@@ -500,6 +477,10 @@ rotation = 6.2831855
 [node name="Barreira" parent="Barreiras2/BarreiraComWALL3" index="0" unique_id=2073381347]
 flip_h = true
 
+[node name="AreaPraPularMaisAlto" parent="Barreiras2" unique_id=2030152503 instance=ExtResource("18_qucpo")]
+position = Vector2(23, -1740)
+is_end_game_area = true
+
 [node name="AreaQuePersegue" parent="." unique_id=1707055331 node_paths=PackedStringArray("player") instance=ExtResource("13_5efat")]
 position = Vector2(79, 144)
 player = NodePath("../CharacterBody2D")
@@ -508,37 +489,21 @@ player = NodePath("../CharacterBody2D")
 
 [node name="Luz3" parent="Luzes" unique_id=393952183 node_paths=PackedStringArray("player") instance=ExtResource("7_yan1i")]
 z_index = -651
-position = Vector2(73, -22)
+position = Vector2(73, -21)
 player = NodePath("../../CharacterBody2D")
 numeroDaLuz = 1
 
-[node name="PointLight2D2" type="PointLight2D" parent="Luzes/Luz3" unique_id=1394852502]
-position = Vector2(0, 12)
-energy = 0.5
-texture = ExtResource("15_qucpo")
-texture_scale = 2.5
-
 [node name="Luz4" parent="Luzes" unique_id=1303959823 node_paths=PackedStringArray("player") instance=ExtResource("7_yan1i")]
 z_index = -651
-position = Vector2(58, -618)
+position = Vector2(58, -617)
 player = NodePath("../../CharacterBody2D")
 numeroDaLuz = 2
 
-[node name="PointLight2D2" type="PointLight2D" parent="Luzes/Luz4" unique_id=202419043]
-energy = 0.5
-texture = ExtResource("15_qucpo")
-texture_scale = 2.5
-
 [node name="Luz5" parent="Luzes" unique_id=611674586 node_paths=PackedStringArray("player") instance=ExtResource("7_yan1i")]
 z_index = -651
-position = Vector2(74, -1270)
+position = Vector2(74, -1269)
 player = NodePath("../../CharacterBody2D")
 numeroDaLuz = 3
-
-[node name="PointLight2D2" type="PointLight2D" parent="Luzes/Luz5" unique_id=1498036112]
-energy = 0.5
-texture = ExtResource("15_qucpo")
-texture_scale = 2.5
 
 [node name="AreaDeTransferencias" type="Node2D" parent="." unique_id=1950259174]
 position = Vector2(6, 2)
@@ -675,13 +640,13 @@ position = Vector2(60, -446)
 position = Vector2(82, -17)
 
 [node name="AreaPraPularMaisAlto2" parent="AreaPuloAlto" unique_id=322022478 instance=ExtResource("18_qucpo")]
-position = Vector2(46, -616)
+position = Vector2(46, -615)
 
 [node name="AreaPraPularMaisAlto5" parent="AreaPuloAlto" unique_id=835931758 instance=ExtResource("18_qucpo")]
-position = Vector2(77, -687)
+position = Vector2(77, -688)
 
 [node name="AreaPraPularMaisAlto6" parent="AreaPuloAlto" unique_id=533593279 instance=ExtResource("18_qucpo")]
-position = Vector2(87, -896)
+position = Vector2(87, -897)
 
 [node name="AreaPraPularMaisAlto7" parent="AreaPuloAlto" unique_id=1672587043 instance=ExtResource("18_qucpo")]
 z_index = -4096
@@ -942,8 +907,9 @@ position = Vector2(-3, -68.4702)
 shape = SubResource("RectangleShape2D_3gngh")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=75667251]
+visible = false
 position = Vector2(15, 84)
-color = Color(0.32024857, 0.32024857, 0.47581574, 1)
+color = Color(0.61596906, 0.61596906, 0.8884792, 1)
 
 [node name="UI" type="Control" parent="." unique_id=1104801810]
 layout_mode = 3
@@ -960,6 +926,56 @@ canvas = NodePath("CanvasLayer")
 
 [node name="CanvasLayer" parent="UI/Dialogo" unique_id=2044932274 instance=ExtResource("1_b3l1h")]
 visible = false
+
+[node name="Suporte" type="Sprite2D" parent="." unique_id=101641666]
+position = Vector2(113.00001, -2060.0002)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("25_g657x")
+
+[node name="Suporte2" type="Sprite2D" parent="." unique_id=1718776050]
+position = Vector2(111.00001, -2066)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("25_g657x")
+
+[node name="Suporte3" type="Sprite2D" parent="." unique_id=645479838]
+position = Vector2(110.00001, -2073)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("25_g657x")
+
+[node name="Suporte4" type="Sprite2D" parent="." unique_id=1163244662]
+position = Vector2(112.00001, -2082.0002)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("25_g657x")
+
+[node name="Suporte5" type="Sprite2D" parent="." unique_id=739786306]
+position = Vector2(111.00001, -2090.0002)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("25_g657x")
+
+[node name="Suporte6" type="Sprite2D" parent="." unique_id=1765913967]
+position = Vector2(113.00001, -2100)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("25_g657x")
+
+[node name="Suporte7" type="Sprite2D" parent="." unique_id=423011769]
+position = Vector2(122.00001, -2104.0002)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("25_g657x")
+
+[node name="Suporte8" type="Sprite2D" parent="." unique_id=1275842846]
+position = Vector2(127, -2108.0002)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("25_g657x")
+
+[node name="Suporte9" type="Sprite2D" parent="." unique_id=868163753]
+position = Vector2(33.000008, -2057.0002)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("25_g657x")
+
+[node name="Suporte10" type="Sprite2D" parent="." unique_id=1450844903]
+position = Vector2(33.000004, -2061.0002)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("25_g657x")
 
 [connection signal="body_entered" from="AreaDeTransferencias/AreaTeleporte4" to="AreaDeTransferencias/AreaTeleporte4" method="_on_body_entered"]
 [connection signal="body_entered" from="AreaDeTransferencias/AreaTeleporte2" to="AreaDeTransferencias/AreaTeleporte2" method="_on_body_entered"]

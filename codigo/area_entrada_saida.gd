@@ -18,12 +18,11 @@ func _on_body_entered(body: Node2D) -> void:
 		var camera = get_viewport().get_camera_2d()
 		
 		if camera:
-			# Desativa o acompanhamento automático da câmera enquanto ela se move
 			var posicao_original_offset = camera.position
 			var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 			
-			# Move a câmera suavemente até a posição de saída
-			tween.tween_property(camera, "global_position", areaDeSaida.global_position, DURACAO_TRANSICAO_CAMERA)
+			# Anima APENAS o eixo Y da câmera até a posição Y da área de saída
+			tween.tween_property(camera, "global_position:y", areaDeSaida.global_position.y, DURACAO_TRANSICAO_CAMERA)
 			await tween.finished
 			
 			# 3. Teleporta o player para o destino e reativa a física
